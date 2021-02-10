@@ -8,22 +8,23 @@ function App() {
     console.log(event.target.value);
     setName(event.target.value);
   }
-  function handleClick() {
+  function handleClick(event) {
     setHeading(name);
     //console.log(name);
+    event.preventDefault();
   }
   return (
     <div className="container">
       <h1>Hello {headingText}</h1>
-      <form>
+      <form onSubmit={handleClick}>
         <input
           type="text"
           onChange={handleChange}
           placeholder="What's your name?"
           value={name}
         />
+        <button type="submit">Submit</button>
       </form>
-      <button onClick={handleClick}>Submit</button>
     </div>
   );
 }
